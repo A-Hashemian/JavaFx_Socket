@@ -1,4 +1,6 @@
 package Client;
 
-public class Room {
+import javafx.fxml.Initializable;
+
+public class Room  extends Thread implements Initializable {
 }
