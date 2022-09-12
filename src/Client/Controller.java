@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
@@ -202,5 +203,16 @@ public class Controller {
         loginNotifier.setOpacity(0);
         userName.setText("");
         passWord.setText("");
+    }
+
+    @FXML
+    private void handleMouseEvent(MouseEvent event) {
+        if (event.getSource() == btnBack) {
+            new FadeIn(pnSignIn).play();
+            pnSignIn.toFront();
+        }
+        regName.setText("");
+        regPass.setText("");
+        regEmail.setText("");
     }
 }
