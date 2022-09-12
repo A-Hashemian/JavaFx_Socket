@@ -81,4 +81,13 @@ public class Controller {
         }
         return true;
     }
+
+    private boolean checkEmail(String email) {
+        for(User user : users) {
+            if(user.email.equalsIgnoreCase(email)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
