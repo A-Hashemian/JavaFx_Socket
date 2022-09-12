@@ -1,5 +1,7 @@
 package Client;
 
+import animatefx.animation.FadeIn;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -185,5 +187,20 @@ public class Controller {
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @FXML
+    private void handleButtonAction(ActionEvent event) {
+        if (event.getSource().equals(btnSignUp)) {
+            new FadeIn(pnSignUp).play();
+            pnSignUp.toFront();
+        }
+        if (event.getSource().equals(getStarted)) {
+            new FadeIn(pnSignIn).play();
+            pnSignIn.toFront();
+        }
+        loginNotifier.setOpacity(0);
+        userName.setText("");
+        passWord.setText("");
     }
 }
