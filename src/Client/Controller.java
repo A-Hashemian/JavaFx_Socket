@@ -100,4 +100,25 @@ public class Controller {
         male.setSelected(true);
         setOpacity(controlRegLabel, checkEmail, nameExists);
     }
+
+
+    public void login() {
+        username = userName.getText();
+        password = passWord.getText();
+        boolean login = false;
+        for (User x : users) {
+            if (x.name.equalsIgnoreCase(username) && x.password.equalsIgnoreCase(password)) {
+                login = true;
+                loggedInUser.add(x);
+                System.out.println(x.name);
+                gender = x.gender;
+                break;
+            }
+        }
+        if (login) {
+            changeWindow();
+        } else {
+            loginNotifier.setOpacity(1);
+        }
+    }
 }
