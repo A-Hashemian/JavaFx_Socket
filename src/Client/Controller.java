@@ -66,4 +66,19 @@ public class Controller {
             d.setOpacity(0);
         }
     }
+
+    private void setOpacity(Label controlRegLabel, Label checkEmail, Label nameExists) {
+        controlRegLabel.setOpacity(0);
+        checkEmail.setOpacity(0);
+        nameExists.setOpacity(0);
+    }
+
+    private boolean checkUser(String username) {
+        for(User user : users) {
+            if(user.name.equalsIgnoreCase(username)) {
+                return false;
+            }
+        }
+        return true;
+    }
 }
