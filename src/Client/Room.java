@@ -4,6 +4,8 @@ import animatefx.animation.FadeIn;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.NodeOrientation;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -13,6 +15,7 @@ import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 
 import java.io.*;
 import java.net.Socket;
@@ -135,6 +138,30 @@ public class Room  extends Thread implements Initializable {
         for(User user : users) {
             System.out.println(user.name);
         }
+    }
+
+    public void send() {
+        String msg = msgField.getText();
+        writer.println(Controller.username + ": " + msg);
+        msgRoom.setNodeOrientation(NodeOrientation.LEFT_TO_RIGHT);
+        msgRoom.appendText("Me: " + msg + "\n");
+        msgField.setText("");
+        if(msg.equalsIgnoreCase("BYE") || (msg.equalsIgnoreCase("logout"))) {
+            System.exit(0);
+        }
+    }
+
+    // Changing profile pic
+
+    public boolean saveControl = false;
+
+    public void chooseImageButton(ActionEvent event) {
+        Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
+        fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Image");
+        this.filePath = fileChooser.showOpenDialog(stage);
+        fileChoosePath.setText(filePath.getPath());
+        saveControl = true;
     }
 
 }
