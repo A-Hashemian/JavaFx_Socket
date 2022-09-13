@@ -11,9 +11,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.Socket;
 
 public class Room  extends Thread implements Initializable {
@@ -55,4 +53,16 @@ public class Room  extends Thread implements Initializable {
     BufferedReader reader;
     PrintWriter writer;
     Socket socket;
+
+    public void connectSocket() {
+        try {
+            socket = new Socket("localhost", 8889);
+            System.out.println("Socket is connected with server!");
+            reader = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            writer = new PrintWriter(socket.getOutputStream(), true);
+            this.start();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 }
