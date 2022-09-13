@@ -16,6 +16,8 @@ import javafx.stage.FileChooser;
 import java.io.*;
 import java.net.Socket;
 
+import static Client.Controller.users;
+
 public class Room  extends Thread implements Initializable {
 
     @FXML
@@ -111,6 +113,19 @@ public class Room  extends Thread implements Initializable {
             toggleProfile = false;
             toggleChat = false;
             profileBtn.setText("Profile");
+        }
+    }
+
+    public void setProfile() {
+        for (User user : users) {
+            if (Controller.username.equalsIgnoreCase(user.name)) {
+                fullName.setText(user.fullName);
+                fullName.setOpacity(1);
+                email.setText(user.email);
+                email.setOpacity(1);
+                phoneNo.setText(user.phoneNo);
+                gender.setText(user.gender);
+            }
         }
     }
 
