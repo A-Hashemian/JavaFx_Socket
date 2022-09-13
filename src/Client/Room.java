@@ -9,6 +9,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
 import javafx.stage.FileChooser;
@@ -126,6 +127,13 @@ public class Room  extends Thread implements Initializable {
                 phoneNo.setText(user.phoneNo);
                 gender.setText(user.gender);
             }
+        }
+    }
+
+    public void handleSendEvent(MouseEvent event) {
+        send();
+        for(User user : users) {
+            System.out.println(user.name);
         }
     }
 
