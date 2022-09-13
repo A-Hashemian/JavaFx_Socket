@@ -11,6 +11,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Circle;
@@ -162,6 +163,12 @@ public class Room  extends Thread implements Initializable {
         this.filePath = fileChooser.showOpenDialog(stage);
         fileChoosePath.setText(filePath.getPath());
         saveControl = true;
+    }
+
+    public void sendMessageByKey(KeyEvent event) {
+        if (event.getCode().toString().equals("ENTER")) {
+            send();
+        }
     }
 
 }
